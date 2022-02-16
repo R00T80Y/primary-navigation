@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+// ---------------------------------------------------------- //
+// Mechanics(behavior)
+// ---------------------------------------------------------- //
+
+.navigation {
+  position: relative;
+
+  // Hiding the checkbox
+  &__state-control {
+    display: none;
+    appearance: none;
+    opacity: 0;
+  }
+
+  // Show the menu if the burger is clicked
+  // input ~ &__panel,
+  &__state-control:checked ~ &__panel {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0px);
+  }
+
+  &__panel {
+    visibility: hidden;
+    display: block;
+    position: fixed;
+    top: 0px;
+    z-index: 1000;
+
+    will-change: transform, opacity;
+    opacity: 0;
+
+    transition-property: transform opacity;
+    transition-duration: 400ms;
+    transition-timing-function: ease-in-out;
+
+    &--left {
+      left: 0px;
+      transform: translateX(-$navigation-panel-max-width);
+    }
+
+    &--right {
+      right: 0px;
+      transform: translateX($navigation-panel-max-width);
+    }
+  }
+
+}
+
+@media(min-width: 48rem) {
+
+  .navigation {
+
+    &__panel {
+      visibility: visible;
+      position: static;
+
+      opacity: 1;
+      transform: translateX(0px);
+      transition-duration: 0ms;
+    }
+
+  }
+
+}

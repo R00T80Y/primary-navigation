@@ -1,0 +1,186 @@
+.navigation {
+  position: relative;
+}
+.navigation__state-control {
+  display: none;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  opacity: 0;
+}
+.navigation__state-control:checked ~ .navigation__panel {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: translateX(0px);
+          transform: translateX(0px);
+}
+.navigation__panel {
+  visibility: hidden;
+  display: block;
+  position: fixed;
+  top: 0px;
+  z-index: 1000;
+  will-change: transform, opacity;
+  opacity: 0;
+  -webkit-transition-property: -webkit-transform opacity;
+  transition-property: -webkit-transform opacity;
+  transition-property: transform opacity;
+  transition-property: transform opacity, -webkit-transform opacity;
+  -webkit-transition-duration: 400ms;
+          transition-duration: 400ms;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+.navigation__panel--left {
+  left: 0px;
+  -webkit-transform: translateX(-400px);
+          transform: translateX(-400px);
+}
+.navigation__panel--right {
+  right: 0px;
+  -webkit-transform: translateX(400px);
+          transform: translateX(400px);
+}
+.navigation__button {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+}
+.navigation__button--burger {
+  width: 34px;
+  height: 26px;
+}
+.navigation__button--burger span {
+  top: 0px;
+}
+.navigation__button--burger span, .navigation__button--burger span::before, .navigation__button--burger span::after {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  display: block;
+  cursor: pointer;
+}
+.navigation__button--burger span::before, .navigation__button--burger span::after {
+  content: "";
+}
+.navigation__button--burger span::before {
+  top: 11px;
+}
+.navigation__button--burger span::after {
+  top: 22px;
+}
+.navigation__button--burger span, .navigation__button--burger span::before, .navigation__button--burger span::after {
+  background-color: #000;
+}
+.navigation__button--close {
+  margin: 8px;
+  width: 27px;
+  height: 27px;
+  float: right;
+}
+.navigation__button--close span {
+  -webkit-transform: rotateZ(45deg);
+          transform: rotateZ(45deg);
+  top: 50%;
+  left: 50%;
+  margin-top: -2px;
+  margin-left: -50%;
+}
+.navigation__button--close span, .navigation__button--close span::before {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  display: block;
+  cursor: pointer;
+  background-color: #000;
+}
+.navigation__button--close span::before {
+  content: "";
+  -webkit-transform: rotateZ(90deg);
+          transform: rotateZ(90deg);
+}
+
+.navigation {
+  font-size: 1.125rem;
+}
+.navigation__panel {
+  width: 100vw;
+  height: 100vh;
+  max-width: 400px;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+@supports ((-webkit-backdrop-filter: ) or (backdrop-filter: )) {
+  .navigation__panel {
+    -webkit-backdrop-filter: blur(2px);
+            backdrop-filter: blur(2px);
+  }
+}
+.navigation__list {
+  margin: 50px 0 0;
+  padding: 0;
+  display: block;
+}
+.navigation__item {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.navigation__link {
+  display: block;
+  padding: 16px 8px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  border: none;
+  color: #000;
+  font-weight: bold;
+  background-color: #f9f9f9;
+}
+.navigation__link:hover {
+  color: #000;
+  background-color: #f1f1f1;
+}
+@media (min-width: 48rem) {
+  .navigation__panel {
+    visibility: visible;
+    position: static;
+    opacity: 1;
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+    -webkit-transition-duration: 0ms;
+            transition-duration: 0ms;
+  }
+  .navigation__panel {
+    width: auto;
+    height: auto;
+    max-width: none;
+    background: transparent;
+  }
+  @supports ((-webkit-backdrop-filter: ) or (backdrop-filter: )) {
+    .navigation__panel {
+      -webkit-backdrop-filter: none;
+              backdrop-filter: none;
+    }
+  }
+  .navigation__list {
+    margin: 0;
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+  .navigation__link {
+    padding: 0;
+  }
+  .navigation__button {
+    display: none;
+  }
+}

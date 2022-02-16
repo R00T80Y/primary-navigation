@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.navigation__button {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+
+  &--burger {
+    width: 34px;
+    height: 26px;
+    @include menu-icon-burger($navigation-button__icon-color, $navigation-button__icon-color--hover);
+  }
+
+  &--close {
+    margin: 8px;
+    width: 27px;
+    height: 27px;
+    float: right;
+    @include menu-icon-close($navigation-button__icon-color, $navigation-button__icon-color--hover);
+  }
+
+}

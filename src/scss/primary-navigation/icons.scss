@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+@mixin menu-icon-burger($color:#000000, $color-hover:false) {
+  span {
+    top: 0px;
+
+    &, &::before, &::after {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      display: block;
+      cursor: pointer;
+    }
+
+    &::before, &::after {
+      content: '';
+    }
+
+    &::before {
+      top: 11px;
+    }
+
+    &::after {
+      top: 22px;
+    }
+
+    &, &::before, &::after {
+      background-color: #{$color};
+    }
+
+  }
+
+  @if $color-hover {
+    &:hover {
+      span {
+        &, &::before, &::after {
+          background-color: #{$color-hover};
+        }
+      }
+    }
+  }
+
+}
+
+@mixin menu-icon-close($color:#000000, $color-hover:false) {
+  span {
+    transform:rotateZ(45deg);
+    top: 50%;
+    left: 50%;
+    margin-top: -2px;
+    margin-left: -50%;
+
+    &, &::before {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      display: block;
+      cursor: pointer;
+
+      background-color: #{$color};
+    }
+
+    &::before {
+      content: '';
+      transform:rotateZ(90deg);
+    }
+
+  }
+
+  @if $color-hover {
+    &:hover {
+      span {
+        &, &::before {
+          background-color: #{$color-hover};
+        }
+      }
+    }
+  }
+
+}
