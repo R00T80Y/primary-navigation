@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-$navigation-panel-width: 100vw;
-$navigation-panel-max-width: 400px;
-$navigation-panel-background: #fff;
+$navigation-panel-width: 100vw !default;
+$navigation-panel-max-width: 400px !default;
+$navigation-panel-background: #fff !default;
 
-$navigation-button__icon-color: #000;
-$navigation-button__icon-color--hover: false;
+$navigation-button__icon-color: #000 !default;
+$navigation-button__icon-color--hover: false !default;
