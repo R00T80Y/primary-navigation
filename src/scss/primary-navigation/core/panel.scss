@@ -33,7 +33,7 @@
     opacity: 0;
 
     transition-property: transform opacity;
-    transition-duration: 400ms;
+    transition-duration: $navigation-panel-transition-duration;
     transition-timing-function: ease-in-out;
 
     &--left {
@@ -45,23 +45,6 @@
       right: 0px;
       transform: translateX($navigation-panel-max-width);
     }
-  }
-
-}
-
-@media(min-width: 48rem) {
-
-  .navigation {
-
-    &__panel {
-      visibility: visible;
-      position: static;
-
-      opacity: 1;
-      transform: translateX(0px);
-      transition-duration: 0ms;
-    }
-
   }
 
 }
