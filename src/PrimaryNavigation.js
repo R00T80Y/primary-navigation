@@ -3,7 +3,7 @@
  * @file
  * @since 23-01-2022
  * @updated 16-02-2022
- * @version 0.1.0
+ * @version 0.2.0
  */
 
 import 'custom-event-polyfill';
@@ -19,7 +19,7 @@ const defaultOptions = {
   panelSelector: '.navigation__panel',
   buttonSelector: '.navigation__button.navigation__button--burger',
 
-  focus: true,
+  focus: false,
 
   init: false,
   open: false,
