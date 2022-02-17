@@ -1,1 +1,109 @@
 @charset "UTF-8";
+
+// ---------------------------------------------------------- //
+// Behavior
+// ---------------------------------------------------------- //
+@media(min-width: 48rem) {
+
+  .navigation {
+
+    &__panel {
+      visibility: visible;
+      position: static;
+
+      width: auto;
+      height: auto;
+      max-width: none;
+
+      background: transparent;
+
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+  }
+
+}
+
+// ---------------------------------------------------------- //
+// Design
+// ---------------------------------------------------------- //
+.navigation {
+  font-size: 1.125rem;
+
+  &__panel {
+    @supports (backdrop-filter) {
+      backdrop-filter: blur(2px);
+    }
+  }
+
+  &__list {
+    margin: 50px 0 0;
+    padding: 0;
+  }
+
+  &__item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__link {
+    display: block;
+    padding: 16px 8px;
+    user-select: none;
+
+    color: #333;
+    font-weight: bold;
+    background-color: #f9f9f9;
+
+    &:hover {
+      color: #000;
+      background-color: #f1f1f1;
+    }
+  }
+
+  &__button {
+    &--close {
+      margin: 8px;
+      float: right;
+    }
+  }
+
+}
+
+// ---------------------------------------------------------- //
+// Design Large screens
+// ---------------------------------------------------------- //
+@media(min-width: 48rem) {
+
+  .navigation {
+
+    &__panel {
+      @supports (backdrop-filter) {
+        backdrop-filter: none;
+      }
+    }
+
+    &__list {
+      margin: 0;
+      padding: 0;
+    }
+
+    &__link {
+      padding: 0;
+    }
+
+    &__button {
+      display: none;
+    }
+
+  }
+
+}
