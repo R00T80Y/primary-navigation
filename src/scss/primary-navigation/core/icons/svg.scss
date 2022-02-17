@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@use "sass:math";
+
+@function dec-to-hex($dec) {
+    $hex: "0123456789ABCDEF";
+    $first: math.div($dec - $dec % 16, 16) + 1;
+    $second: ($dec % 16)+1;
+    @return str-slice($hex, $first, $first) + str-slice($hex, $second, $second);
+}
+
+@function color-to-hex($string) {
+  $red: red($string);
+  $green: green($string);
+  $blue: blue($string);
+  @return #{dec-to-hex($red)}#{dec-to-hex($green)}#{dec-to-hex($blue)};
+}
+
+// ---------------------------------------------------------- //
+// SVG: https://yoksel.github.io/url-encoder/
+// ---------------------------------------------------------- //
+@mixin menu-icon-burger-svg($color:#000000, $color-hover: false) {
+  $color: '%23' + color-to-hex($color);
+
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg width='34' height='26' viewBox='0 0 34 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='22' width='34' height='4' fill='#{$color}'/%3E%3Crect y='11' width='34' height='4' fill='#{$color}'/%3E%3Crect width='34' height='4' fill='#{$color}'/%3E%3C/svg%3E");
+
+  @if $color-hover {
+    $color-hover: '%23' + color-to-hex($color-hover);
+    &:hover {
+      background-image: url("data:image/svg+xml,%3Csvg width='34' height='26' viewBox='0 0 34 26' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect y='22' width='34' height='4' fill='#{$color-hover}'/%3E%3Crect y='11' width='34' height='4' fill='#{$color-hover}'/%3E%3Crect width='34' height='4' fill='#{$color-hover}'/%3E%3C/svg%3E");
+    }
+
+  }
+
+}
+
+@mixin menu-icon-close-svg($color:#000000, $color-hover: false) {
+  $color: '%23' + color-to-hex($color);
+
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg width='27' height='27' viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3.72792' y='0.899495' width='32' height='4' transform='rotate(45 3.72792 0.899495)' fill='#{$color}'/%3E%3Crect x='0.957062' y='23.5845' width='32' height='4' transform='rotate(-45 0.957062 23.5845)' fill='#{$color}'/%3E%3C/svg%3E");
+
+  @if $color-hover {
+    $color-hover: '%23' + color-to-hex($color-hover);
+    &:hover {
+      background-image: url("data:image/svg+xml,%3Csvg width='27' height='27' viewBox='0 0 27 27' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='3.72792' y='0.899495' width='32' height='4' transform='rotate(45 3.72792 0.899495)' fill='#{$color-hover}'/%3E%3Crect x='0.957062' y='23.5845' width='32' height='4' transform='rotate(-45 0.957062 23.5845)' fill='#{$color-hover}'/%3E%3C/svg%3E");
+    }
+
+  }
+
+}

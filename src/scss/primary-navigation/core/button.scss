@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 @import "icons/css";
+@import "icons/svg";
 
 .navigation__button {
   display: block;
@@ -11,13 +12,21 @@
   &--burger {
     width: 34px;
     height: 26px;
-    @include menu-icon-burger($navigation-button__icon-color, $navigation-button__icon-color--hover);
+    @if $navigation-button__icon-svg {
+      @include menu-icon-burger-svg($navigation-button__icon-color, $navigation-button__icon-color--hover);
+    } @else {
+      @include menu-icon-burger($navigation-button__icon-color, $navigation-button__icon-color--hover);
+    }
   }
 
   &--close {
     width: 27px;
     height: 27px;
-    @include menu-icon-close($navigation-button__icon-color, $navigation-button__icon-color--hover);
+    @if $navigation-button__icon-svg {
+      @include menu-icon-close-svg($navigation-button__icon-color, $navigation-button__icon-color--hover);
+    } @else {
+      @include menu-icon-close($navigation-button__icon-color, $navigation-button__icon-color--hover);
+    }
   }
 
 }
