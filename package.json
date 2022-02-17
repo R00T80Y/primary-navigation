@@ -1,6 +1,6 @@
 {
   "name": "@r00t80y/primary-navigation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Menus on checkboxes",
   "main": "./dist/PrimaryNavigation.js",
   "module": "./src/PrimaryNavigation.js",

@@ -41,6 +41,7 @@
   -webkit-transform: translateX(400px);
           transform: translateX(400px);
 }
+
 .navigation__button {
   display: block;
   position: relative;
@@ -50,65 +51,30 @@
 .navigation__button--burger {
   width: 34px;
   height: 26px;
-}
-.navigation__button--burger span {
-  top: 0px;
-}
-.navigation__button--burger span, .navigation__button--burger span::before, .navigation__button--burger span::after {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  display: block;
-  cursor: pointer;
-}
-.navigation__button--burger span::before, .navigation__button--burger span::after {
-  content: "";
-}
-.navigation__button--burger span::before {
-  top: 11px;
-}
-.navigation__button--burger span::after {
-  top: 22px;
-}
-.navigation__button--burger span, .navigation__button--burger span::before, .navigation__button--burger span::after {
-  background-color: #000;
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg width=%2734%27 height=%2726%27 viewBox=%270 0 34 26%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Crect y=%2722%27 width=%2734%27 height=%274%27 fill=%27%23000000%27/%3E%3Crect y=%2711%27 width=%2734%27 height=%274%27 fill=%27%23000000%27/%3E%3Crect width=%2734%27 height=%274%27 fill=%27%23000000%27/%3E%3C/svg%3E");
 }
 .navigation__button--close {
-  margin: 8px;
   width: 27px;
   height: 27px;
-  float: right;
-}
-.navigation__button--close span {
-  -webkit-transform: rotateZ(45deg);
-          transform: rotateZ(45deg);
-  top: 50%;
-  left: 50%;
-  margin-top: -2px;
-  margin-left: -50%;
-}
-.navigation__button--close span, .navigation__button--close span::before {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  display: block;
-  cursor: pointer;
-  background-color: #000;
-}
-.navigation__button--close span::before {
-  content: "";
-  -webkit-transform: rotateZ(90deg);
-          transform: rotateZ(90deg);
+  background-repeat: no-repeat;
+  background-image: url("data:image/svg+xml,%3Csvg width=%2727%27 height=%2727%27 viewBox=%270 0 27 27%27 fill=%27none%27 xmlns=%27http://www.w3.org/2000/svg%27%3E%3Crect x=%273.72792%27 y=%270.899495%27 width=%2732%27 height=%274%27 transform=%27rotate%2845 3.72792 0.899495%29%27 fill=%27%23000000%27/%3E%3Crect x=%270.957062%27 y=%2723.5845%27 width=%2732%27 height=%274%27 transform=%27rotate%28-45 0.957062 23.5845%29%27 fill=%27%23000000%27/%3E%3C/svg%3E");
 }
 
-.navigation {
-  font-size: 1.125rem;
-}
 .navigation__panel {
   width: 100vw;
   height: 100vh;
   max-width: 400px;
   background-color: rgba(255, 255, 255, 0.95);
+}
+.navigation__list {
+  display: block;
+}
+.navigation__item {
+  list-style: none;
+}
+.navigation {
+  font-size: 1.125rem;
 }
 @supports ((-webkit-backdrop-filter: ) or (backdrop-filter: )) {
   .navigation__panel {
@@ -119,12 +85,10 @@
 .navigation__list {
   margin: 50px 0 0;
   padding: 0;
-  display: block;
 }
 .navigation__item {
   margin: 0;
   padding: 0;
-  list-style: none;
 }
 .navigation__link {
   display: block;
@@ -133,8 +97,7 @@
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  border: none;
-  color: #000;
+  color: #333;
   font-weight: bold;
   background-color: #f9f9f9;
 }
@@ -142,21 +105,34 @@
   color: #000;
   background-color: #f1f1f1;
 }
+.navigation__button--close {
+  margin: 8px;
+  float: right;
+}
 @media (min-width: 48rem) {
   .navigation__panel {
     visibility: visible;
     position: static;
-    opacity: 1;
-    -webkit-transform: translateX(0px);
-            transform: translateX(0px);
-    -webkit-transition-duration: 0ms;
-            transition-duration: 0ms;
-  }
-  .navigation__panel {
     width: auto;
     height: auto;
     max-width: none;
     background: transparent;
+    opacity: 1;
+    -webkit-transform: none;
+            transform: none;
+    -webkit-transition: none;
+    transition: none;
+  }
+  .navigation__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
   @supports ((-webkit-backdrop-filter: ) or (backdrop-filter: )) {
     .navigation__panel {
@@ -167,15 +143,6 @@
   .navigation__list {
     margin: 0;
     padding: 0;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
   }
   .navigation__link {
     padding: 0;
