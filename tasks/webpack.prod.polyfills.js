@@ -46,7 +46,10 @@ module.exports = {
     rules: [
       {
         test: /\.m?js$/,
-        exclude: /(node_modules)/,
+        exclude: {
+          and: [/node_modules/],
+          not: [/resize-delay/]
+        },
         use: {
           "loader": "babel-loader",
           "options": {
