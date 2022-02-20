@@ -15,11 +15,12 @@ createPrimaryNavigation(document.querySelectorAll('.navigation'), {
 ```
 Styles
 ```
-import '@r00t80y/primary-navigation/src/scss/core/index';
-import '@r00t80y/primary-navigation/src/scss/themes/clean';
+// scss
+@import '@r00t80y/primary-navigation/src/scss/primary-navigation/core/index';
+@import '@r00t80y/primary-navigation/src/scss/primary-navigation/themes/clean';
 ```
 ## What's new?
-### v0.1.0
+### v1.1.0
 - SVG Icons
 ```
 $navigation-button__icon-svg: true !default;
