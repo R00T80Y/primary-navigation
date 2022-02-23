@@ -1,7 +1,4 @@
 module.exports = {
-  env: {
-    browser: true
-  },
   extends: require.resolve('eslint-config-airbnb-base'),
   rules: {
     // Disallow comma-dangle
@@ -38,5 +35,9 @@ module.exports = {
     // This is not explained in the AirBnB style guide either
     // http://eslint.org/docs/rules/no-cond-assign
     'no-cond-assign': [2, 'except-parens']
+  },
+  env: {
+    // Global Browser variable(document)
+    browser: true
   }
 };
