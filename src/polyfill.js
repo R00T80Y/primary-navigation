@@ -4,8 +4,8 @@ if (!Element.prototype.closest) {
     Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
   }
   Element.prototype.closest = function (s) {
-    var el = this;
-    var ancestor = this;
+    const el = this;
+    let ancestor = this;
     if (!document.documentElement.contains(el)) return null;
     do {
       if (ancestor.matches(s)) return ancestor;

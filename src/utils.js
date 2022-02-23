@@ -12,8 +12,8 @@ const Utils = {
   },
 
   isFunction(func) {
-    return (Utils.type(func) === 'function')
+    return (Utils.type(func) === 'function');
   }
-}
+};
 
 export default Utils;
