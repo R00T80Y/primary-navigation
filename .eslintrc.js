@@ -1,4 +1,7 @@
 module.exports = {
+  env: {
+    browser: true
+  },
   extends: require.resolve('eslint-config-airbnb-base'),
   rules: {
     // Disallow comma-dangle
