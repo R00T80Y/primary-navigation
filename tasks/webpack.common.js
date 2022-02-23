@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /**
  * @author r00t80y<https://github.com/R00T80Y>
  * @since 10.02.2022
@@ -5,37 +6,36 @@
  * @version 0.1.0
  */
 
-const paths = require('./paths');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const paths = require('./paths');
 
 module.exports = {
   context: paths.source,
 
   entry: {
     PrimaryNavigation: {
-      import: `./PrimaryNavigation`,
+      import: './PrimaryNavigation',
+      filename: '[name].lib.js',
       library: {
         name: 'PrimaryNavigation',
         type: 'umd',
-        export: 'default',
-        umdNamedDefine: true,
-      },
+        export: 'createPrimaryNavigation',
+        umdNamedDefine: true
+      }
     },
 
     index: {
-      import: `./index`,
-      dependOn: ['PrimaryNavigation'],
+      import: './index',
+      dependOn: ['PrimaryNavigation']
     }
   },
 
   output: {
     path: paths.build,
-    filename: `[name].js`,
-    publicPath: '/',
-    clean: true,
+    filename: '[name].js',
+    publicPath: '/'
   },
 
   plugins: [
@@ -44,26 +44,23 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html',
       filename: 'index.html',
-      favicon: `favicon.ico`,
+      favicon: 'favicon.ico',
       inject: 'body',
       minify: false
     }),
 
     new MiniCssExtractPlugin({
-      filename: `primary-navigation.css`,
-    }),
+      filename: 'primary-navigation.css'
+    })
   ],
 
   module: {
     rules: [
       {
         test: /\.m?js$/,
-        exclude: {
-          and: [/node_modules/],
-          not: [/resize-delay/]
-        },
+        exclude: [/node_modules/],
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader'
         }
       },
 
@@ -71,35 +68,29 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
             options: {
               importLoaders: 2,
               sourceMap: false,
-              modules: false,
-            },
+              modules: false
+            }
           },
           {
-            loader: "postcss-loader",
+            loader: 'postcss-loader'
           },
           {
-            loader: "sass-loader",
+            loader: 'sass-loader',
             options: {
               sassOptions: {
-                outputStyle: "expanded",
-              },
-            },
-          },
-        ],
-      },
-
-      {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource'
-      },
-
-    ],
-  },
+                outputStyle: 'expanded'
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
 };

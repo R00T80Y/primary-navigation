@@ -7,10 +7,9 @@
  */
 
 import 'custom-event-polyfill';
-import './polyfill.js';
-import resizeDelay from '@r00t80y/resize-delay';
-import Utils from './utils.js';
-
+import './polyfill';
+import { ResizeDelay } from '@r00t80y/resize-delay';
+import Utils from './utils';
 
 const defaultOptions = {
   breakpointClose: 756,
@@ -23,11 +22,10 @@ const defaultOptions = {
 
   init: false,
   open: false,
-  close: false,
+  close: false
 };
 
 function Plugin($rootElement, pluginOptions) {
-
   // Link to function to remove the resize event
   let resizeDestroyCallback = null;
 
@@ -35,7 +33,7 @@ function Plugin($rootElement, pluginOptions) {
 
   const $button = $rootElement.querySelector(pluginOptions.buttonSelector);
 
-  const $labelsList = $rootElement.querySelectorAll('label[for="' + $checkbox.id + '"]');
+  const $labelsList = $rootElement.querySelectorAll(`label[for="${$checkbox.id}"]`);
 
   const $panel = $rootElement.querySelector(pluginOptions.panelSelector);
 
@@ -98,7 +96,7 @@ function Plugin($rootElement, pluginOptions) {
     if (!isOpen()) return;
 
     // Ignore click inside the menu
-    if (event.target.closest('#' + $rootElement.id)) return;
+    if (event.target.closest(`#${$rootElement.id}`)) return;
 
     // Close menu
     close();
@@ -107,25 +105,25 @@ function Plugin($rootElement, pluginOptions) {
   function onStateModify(event) {
     // Is the menu open or not?
     if (event.target.checked) {
-      for (let i = 0, l = $labelsList.length; i < l; ++i) {
-        $labelsList[i].setAttribute("aria-expanded", "true");
+      for (let i = 0, l = $labelsList.length; i < l; i += 1) {
+        $labelsList[i].setAttribute('aria-expanded', 'true');
       }
 
-      $panel.setAttribute("data-visible", "true");
+      $panel.setAttribute('data-visible', 'true');
 
       if (pluginOptions.focus) {
-        setTimeout(function() {
+        setTimeout(() => {
           $panel.querySelector('a').focus();
         }, 400);
       }
 
       Utils.isFunction(pluginOptions.open) && pluginOptions.open();
     } else {
-      for (let i = 0, l = $labelsList.length; i < l; ++i) {
-        $labelsList[i].setAttribute("aria-expanded", "false");
+      for (let i = 0, l = $labelsList.length; i < l; i += 1) {
+        $labelsList[i].setAttribute('aria-expanded', 'false');
       }
 
-      $panel.setAttribute("data-visible", "false");
+      $panel.setAttribute('data-visible', 'false');
 
       if (pluginOptions.focus) {
         $button.focus();
@@ -137,7 +135,7 @@ function Plugin($rootElement, pluginOptions) {
 
   function createEvents() {
     if (pluginOptions.breakpointClose !== false) {
-      resizeDestroyCallback = (new resizeDelay()).add(function () {
+      resizeDestroyCallback = (new ResizeDelay()).add(() => {
         // Close the menu if the window is resized
         if (document.body.clientWidth >= pluginOptions.breakpointClose) {
           close();
@@ -147,7 +145,7 @@ function Plugin($rootElement, pluginOptions) {
 
     $rootElement.addEventListener('keydown', onKeydownEsc);
     $checkbox.addEventListener('change', onStateModify);
-    for (let i = 0, l = $labelsList.length; i < l; ++i) {
+    for (let i = 0, l = $labelsList.length; i < l; i += 1) {
       $labelsList[i].addEventListener('keydown', onKeydown);
     }
 
@@ -159,7 +157,7 @@ function Plugin($rootElement, pluginOptions) {
 
     $rootElement.removeEventListener('keydown', onKeydownEsc);
     $checkbox.removeEventListener('change', onStateModify);
-    for (let i = 0, l = $labelsList.length; i < l; ++i) {
+    for (let i = 0, l = $labelsList.length; i < l; i += 1) {
       $labelsList[i].removeEventListener('keydown', onKeydown);
     }
 
@@ -173,40 +171,49 @@ function Plugin($rootElement, pluginOptions) {
   return {
     get options() { return pluginOptions; },
     isOpen,
-    open() { open() },
-    close() { close() },
-    destroy,
-  }
+    open() { open(); },
+    close() { close(); },
+    destroy
+  };
 }
 
-export default function createPrimaryNavigation(element, customOptions) {
-    const nodeList = [];
-    const instances = [];
+function createPrimaryNavigation(element, customOptions) {
+  const nodeList = [];
+  const instances = [];
 
-    return (function init() {
-      if (element && element instanceof HTMLElement) {
-        nodeList.push(element);
-      } else if (element && typeof element === 'string') {
-        const elementsList = document.querySelectorAll(element);
-        for (let i = 0, l = elementsList.length; i < l; ++i) {
-          if (elementsList[i] instanceof HTMLElement) {
-            nodeList.push(elementsList[i]);
-          }
-        }
-      } else if (element && element.length) {
-        for (let i = 0, l = element.length; i < l; ++i) {
-          if (element[i] instanceof HTMLElement) {
-            nodeList.push(element[i]);
-          }
+  return (function init() {
+    if (element && element instanceof HTMLElement) {
+      nodeList.push(element);
+    } else if (element && typeof element === 'string') {
+      const elementsList = document.querySelectorAll(element);
+      for (let i = 0, l = elementsList.length; i < l; i += 1) {
+        if (elementsList[i] instanceof HTMLElement) {
+          nodeList.push(elementsList[i]);
         }
       }
-
-      for (let i = 0, l = nodeList.length; i < l; ++i) {
-        instances.push(Plugin(nodeList[i], Object.assign({}, defaultOptions, customOptions, {
-          name: 'ToggleButton'
-        })));
+    } else if (element && element.length) {
+      for (let i = 0, l = element.length; i < l; i += 1) {
+        if (element[i] instanceof HTMLElement) {
+          nodeList.push(element[i]);
+        }
       }
+    }
 
-      return instances;
-    }());
-  }
+    for (let i = 0, l = nodeList.length; i < l; i += 1) {
+      // instances.push(Plugin(nodeList[i], Object.assign({}, defaultOptions, customOptions, {
+      //   name: 'ToggleButton'
+      // })));
+      instances.push(Plugin(nodeList[i], {
+        ...defaultOptions,
+        ...customOptions,
+        name: 'ToggleButton'
+      }));
+    }
+
+    return instances;
+  }());
+}
+
+export {
+  createPrimaryNavigation
+};

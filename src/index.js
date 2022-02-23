@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import './scss/primary-navigation/index.scss';
-import createPrimaryNavigation from './PrimaryNavigation';
+import { createPrimaryNavigation } from './PrimaryNavigation';
 
 const menuList = createPrimaryNavigation(document.querySelectorAll('.navigation'), {
   open() {
