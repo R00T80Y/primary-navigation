@@ -3,7 +3,7 @@
 npm install @r00t80y/primary-navigation
 ```
 ## How to use?
-JavaScript
+**JavaScript**
 ```js
 import { createPrimaryNavigation } from '@r00t80y/primary-navigation';
 
@@ -13,13 +13,13 @@ createPrimaryNavigation(document.querySelectorAll('.navigation'), {
   },
 });
 ```
-Styles
+**Styles**
 ```scss
 @import '@r00t80y/primary-navigation/src/scss/primary-navigation/core/index';
 @import '@r00t80y/primary-navigation/src/scss/primary-navigation/themes/clean';
 ```
-# Options Default
-```json
+# Default Options
+```js
 {
   breakpointClose: 756,
   init: false,
@@ -28,16 +28,16 @@ Styles
 }
 ```
 
-** breakpointClose (`Number`) **
+**breakpointClose (`Number`)**
 Close menu if browser window size is larger than `breakpointClose`
 
-** init (`Callback Function`) **
+**init (`Callback Function`)**
 Called once during plug-in initialisation
 
-** open (`Callback Function`) **
+**open (`Callback Function`)**
 Called when opening a menu
 
-** close `(Callback Function)` **
+**close `(Callback Function)`**
 Called when the menu is closed
 
 ## What's new?
@@ -48,17 +48,17 @@ $navigation-button__icon-svg: true !default;
 ```
 - Restructuring the styles folder `./src/scss`
 ```
-`primary-navigation`
--- `core`
----- `icons`
------- `css.scss`
------- `svg.scss`
----- `vars.scss`
----- `panel.scss`
----- `button.scss`
----- `index.scss`
+primary-navigation
+-- core
+---- icons
+------ css.scss
+------ svg.scss
+---- vars.scss
+---- panel.scss
+---- button.scss
+---- index.scss
 -- themes
----- `clean.scss`
+---- clean.scss
 ```
 - Focus is off by default
 ```js
