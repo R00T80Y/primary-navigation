@@ -1,6 +1,6 @@
 {
   "name": "@r00t80y/primary-navigation",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Menus on checkboxes",
   "sideEffects": ["*.scss"],
   "exports": {
@@ -65,7 +65,7 @@
     "webpack-merge": "^5.8.0"
   },
   "peerDependencies": {
-    "@r00t80y/resize-delay": "^1.1.0",
+    "@r00t80y/resize-delay": "^1.1.1",
     "custom-event-polyfill": ">=1.0.7"
   }
 }
