@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * @author r00t80y<https://github.com/R00T80Y>
  * @file
@@ -30,19 +31,9 @@ function Plugin($rootElement, pluginOptions) {
   let resizeDestroyCallback = null;
 
   const $checkbox = $rootElement.querySelector(pluginOptions.stateControlSelector);
-
   const $button = $rootElement.querySelector(pluginOptions.buttonSelector);
-
   const $labelsList = $rootElement.querySelectorAll(`label[for="${$checkbox.id}"]`);
-
   const $panel = $rootElement.querySelector(pluginOptions.panelSelector);
-
-  // When the page loads, close the menu
-  close();
-
-  createEvents();
-
-  Utils.isFunction(pluginOptions.init) && pluginOptions.init();
 
   // Menu opened or not
   function isOpen() {
@@ -117,7 +108,9 @@ function Plugin($rootElement, pluginOptions) {
         }, 400);
       }
 
-      Utils.isFunction(pluginOptions.open) && pluginOptions.open();
+      if (Utils.isFunction(pluginOptions.open)) {
+        pluginOptions.open();
+      }
     } else {
       for (let i = 0, l = $labelsList.length; i < l; i += 1) {
         $labelsList[i].setAttribute('aria-expanded', 'false');
@@ -129,7 +122,9 @@ function Plugin($rootElement, pluginOptions) {
         $button.focus();
       }
 
-      Utils.isFunction(pluginOptions.close) && pluginOptions.close();
+      if (Utils.isFunction(pluginOptions.close)) {
+        pluginOptions.close();
+      }
     }
   }
 
@@ -168,6 +163,14 @@ function Plugin($rootElement, pluginOptions) {
     removeEvents();
   }
 
+  // When the page loads, close the menu
+  close();
+  createEvents();
+
+  if (Utils.isFunction(pluginOptions.init)) {
+    pluginOptions.init();
+  }
+
   return {
     get options() { return pluginOptions; },
     isOpen,
@@ -203,7 +206,7 @@ function createPrimaryNavigation(element, customOptions) {
       // instances.push(Plugin(nodeList[i], Object.assign({}, defaultOptions, customOptions, {
       //   name: 'ToggleButton'
       // })));
-      instances.push(Plugin(nodeList[i], {
+      instances.push(new Plugin(nodeList[i], {
         ...defaultOptions,
         ...customOptions,
         name: 'ToggleButton'
