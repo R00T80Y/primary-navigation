@@ -22,6 +22,8 @@ createPrimaryNavigation(document.querySelectorAll('.navigation'), {
 ```js
 {
   breakpointClose: 756,
+  overflowHidden: true,
+
   init: false,
   open: false,
   close: false
@@ -30,6 +32,9 @@ createPrimaryNavigation(document.querySelectorAll('.navigation'), {
 
 **breakpointClose (`Number`)**
 Close menu if browser window size is larger than `breakpointClose`
+
+**overflowHidden (`Boolean`)**
+Add `overflow:hidden` when the menu is open
 
 **init (`Callback Function`)**
 Called once during plug-in initialisation
@@ -41,6 +46,8 @@ Called when opening a menu
 Called when the menu is closed
 
 ## What's new?
+### v1.3.1
+- Added default option `overflowHidden`
 ### v1.1.0
 - SVG Icons
 ```scss
