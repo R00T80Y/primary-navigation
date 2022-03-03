@@ -14,6 +14,7 @@ import Utils from './utils';
 
 const defaultOptions = {
   breakpointClose: 756,
+  overflowHidden: true,
 
   stateControlSelector: '.navigation__state-control',
   panelSelector: '.navigation__panel',
@@ -96,6 +97,10 @@ function Plugin($rootElement, pluginOptions) {
   function onStateModify(event) {
     // Is the menu open or not?
     if (event.target.checked) {
+      if (pluginOptions.overflowHidden) {
+        document.querySelector('html').style.overflow = 'hidden';
+      }
+
       for (let i = 0, l = $labelsList.length; i < l; i += 1) {
         $labelsList[i].setAttribute('aria-expanded', 'true');
       }
@@ -112,6 +117,10 @@ function Plugin($rootElement, pluginOptions) {
         pluginOptions.open();
       }
     } else {
+      if (pluginOptions.overflowHidden) {
+        document.querySelector('html').style.overflow = 'auto';
+      }
+
       for (let i = 0, l = $labelsList.length; i < l; i += 1) {
         $labelsList[i].setAttribute('aria-expanded', 'false');
       }
