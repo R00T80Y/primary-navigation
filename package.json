@@ -2,7 +2,9 @@
   "name": "@r00t80y/primary-navigation",
   "version": "1.2.1",
   "description": "Menus on checkboxes",
-  "sideEffects": ["*.scss"],
+  "sideEffects": [
+    "*.scss"
+  ],
   "exports": {
     ".": {
       "import": "./dist/esm/index.js",
@@ -66,6 +68,7 @@
   },
   "peerDependencies": {
     "@r00t80y/resize-delay": "^1.1.1",
-    "custom-event-polyfill": ">=1.0.7"
+    "custom-event-polyfill": ">=1.0.7",
+    "element-closest-polyfill": "^1.0.4"
   }
 }

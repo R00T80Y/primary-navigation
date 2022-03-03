@@ -8,7 +8,7 @@
  */
 
 import 'custom-event-polyfill';
-import './polyfill';
+import 'element-closest-polyfill';
 import { ResizeDelay } from '@r00t80y/resize-delay';
 import Utils from './utils';
 
