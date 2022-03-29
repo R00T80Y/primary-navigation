@@ -3,22 +3,25 @@
 npm install @r00t80y/primary-navigation
 ```
 ## How to use?
-**JavaScript**
+
+### JavaScript
 ```js
 import { createPrimaryNavigation } from '@r00t80y/primary-navigation';
 
 createPrimaryNavigation(document.getElementById('navigation'), {
   init: function () {
-    console.log(`It's init`);
+    console.log(`It's works!`);
   },
 });
 ```
-**Styles**
+
+### Styles
 ```scss
 @import '@r00t80y/primary-navigation/src/scss/primary-navigation/core/index';
 @import '@r00t80y/primary-navigation/src/scss/primary-navigation/themes/clean';
 ```
-**HTML**
+
+### HTML
 ```html
 <div id="navigation" class="navigation">
   <input type="checkbox" id="navigation__state-control" name="navigation__state-control" class="navigation__state-control" checked="false">
@@ -50,7 +53,8 @@ createPrimaryNavigation(document.getElementById('navigation'), {
   </nav>
 </div>
 ```
-# Default Options
+
+## Default Options
 ```js
 {
   breakpointClose: 756,
@@ -62,19 +66,19 @@ createPrimaryNavigation(document.getElementById('navigation'), {
 }
 ```
 
-**breakpointClose (`Number`)**
+### breakpointClose (`Number`)
 Close menu if browser window size is larger than `breakpointClose`
 
-**overflowHidden (`Boolean`)**
+### overflowHidden (`Boolean`)
 Add `overflow:hidden` when the menu is open
 
-**init (`Callback Function`)**
+### init (`Callback Function`)
 Called once during plug-in initialisation
 
-**open (`Callback Function`)**
+### open (`Callback Function`)
 Called when opening a menu
 
-**close `(Callback Function)`**
+### close `(Callback Function)`
 Called when the menu is closed
 
 ## What's new?
