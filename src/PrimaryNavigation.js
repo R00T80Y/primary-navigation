@@ -38,18 +38,22 @@ function Plugin($rootElement, pluginOptions) {
 
   // Menu opened or not
   function isOpen() {
-    return $checkbox.checked;
+    return !!$checkbox.checked;
   }
 
   // Open menu
   function open() {
-    $checkbox.checked = true;
-    $checkbox.dispatchEvent(new CustomEvent('change'));
+    if (!isOpen()) {
+      $checkbox.checked = true;
+      $checkbox.dispatchEvent(new CustomEvent('change'));
+    }
   }
   // Close menu
   function close() {
-    $checkbox.checked = false;
-    $checkbox.dispatchEvent(new CustomEvent('change'));
+    if (isOpen()) {
+      $checkbox.checked = false;
+      $checkbox.dispatchEvent(new CustomEvent('change'));
+    }
   }
 
   function onKeydown(e) {
@@ -141,8 +145,10 @@ function Plugin($rootElement, pluginOptions) {
     if (pluginOptions.breakpointClose !== false) {
       resizeDestroyCallback = (new ResizeDelay()).add(() => {
         // Close the menu if the window is resized
-        if (document.body.clientWidth >= pluginOptions.breakpointClose) {
-          close();
+        if (isOpen()) {
+          if (document.body.clientWidth >= pluginOptions.breakpointClose) {
+            close();
+          }
         }
       });
     }
