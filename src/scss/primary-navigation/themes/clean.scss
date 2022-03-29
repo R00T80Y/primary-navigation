@@ -4,6 +4,8 @@
 // Behavior
 // ---------------------------------------------------------- //
 .navigation {
+  display: inline-block;
+
   &__panel {
     display: flex;
     flex-direction: column;
@@ -11,8 +13,8 @@
 }
 
 @media(min-width: 48rem) {
-
   .navigation {
+    display: block;
 
     &__panel {
       visibility: visible;
