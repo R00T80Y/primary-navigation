@@ -6,6 +6,7 @@
 
 .navigation {
   position: relative;
+  display: inline-block;
 
   // Hiding the checkbox
   &__state-control {
