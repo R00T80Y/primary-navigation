@@ -19,7 +19,14 @@
   &__state-control:checked ~ &__panel {
     visibility: visible;
     opacity: 1;
-    transform: translateX(0px);
+
+    &--left {
+      transform: translateX($navigation-panel-max-width);
+    }
+
+    &--right {
+      transform: translateX(-$navigation-panel-max-width);
+    }
   }
 
   &__panel {
@@ -32,18 +39,18 @@
     will-change: transform, opacity;
     opacity: 0;
 
-    transition-property: transform opacity;
+    transition-property: transform, opacity, visibility;
     transition-duration: $navigation-panel-transition-duration;
     transition-timing-function: ease-in-out;
 
     &--left {
-      left: 0px;
-      transform: translateX(-$navigation-panel-max-width);
+      left: -$navigation-panel-max-width;
+      transform: translateX(0);
     }
 
     &--right {
-      right: 0px;
-      transform: translateX($navigation-panel-max-width);
+      right: -$navigation-panel-max-width;
+      transform: translateX(0);
     }
   }
 

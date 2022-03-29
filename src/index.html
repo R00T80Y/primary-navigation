@@ -11,30 +11,10 @@
 body {
   background: #f1f1f1;
 }
-</style>
-
-<style>
-body.js-resize-animation-stopper * {
-  animation: none !important;
-  transition: none !important;
-}
 *:focus {
   outline: 2px solid rgba(255, 0, 0, 0.6);
 }
 </style>
-<script>
-let resizeTimer;
-
-window.addEventListener("resize", () => {
-  document.body.classList.add("js-resize-animation-stopper");
-  clearTimeout(resizeTimer);
-
-  resizeTimer = setTimeout(() => {
-    document.body.classList.remove("js-resize-animation-stopper");
-  }, 400);
-
-});
-</script>
 
 </head><body>
 
