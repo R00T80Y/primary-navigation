@@ -2,7 +2,7 @@
  * @author r00t80y<https://github.com/R00T80Y>
  * @file Utils used in plugin
  * @since 09-02-2022
- * @updated 14-02-2022
+ * @updated 10-04-2022
  */
 
 const Utils = {
@@ -13,6 +13,12 @@ const Utils = {
 
   isFunction(func) {
     return (Utils.type(func) === 'function');
+  },
+
+  uniqId() {
+    const date = (Date.now()).toString(36);
+    const number = (Math.random()).toString(36).substring(2);
+    return date + number;
   }
 };
 
