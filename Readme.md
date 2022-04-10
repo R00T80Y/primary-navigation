@@ -8,11 +8,19 @@ npm install @r00t80y/primary-navigation
 ```js
 import { createPrimaryNavigation } from '@r00t80y/primary-navigation';
 
-createPrimaryNavigation(document.getElementById('navigation'), {
+const pluginDestroyCallback = createPrimaryNavigation(document.getElementById('navigation'), {
   init: function () {
     console.log(`It's works!`);
   },
+  open() {
+    console.log('Menu Open');
+  },
+  close() {
+    console.log('Menu Close');
+  }
 });
+
+// pluginDestroyCallback()
 ```
 
 ### Styles
@@ -20,13 +28,15 @@ createPrimaryNavigation(document.getElementById('navigation'), {
 @import '@r00t80y/primary-navigation/src/scss/primary-navigation/core/index';
 @import '@r00t80y/primary-navigation/src/scss/primary-navigation/themes/clean';
 ```
+or copy the styles and edit ```@r00t80y/primary-navigation/dist/primary-navigation.css```
+
 
 ### HTML
 ```html
 <div id="navigation" class="navigation">
-  <input type="checkbox" id="navigation__state-control" name="navigation__state-control" class="navigation__state-control" checked="false">
-  <!-- If checked="false" not work -->
-  <!-- <script>document.getElementById('navigation__state-control').checked = false;</script> -->
+  <input type="checkbox" id="navigation__state-control" name="navigation__state-control" class="navigation__state-control" checked="false" style="display:none">
+  <!-- Sometimes the browser caches the state of the checkbox -->
+  <script>document.getElementById('navigation__state-control').checked = false;</script>
   <!-- Burger Icon -->
   <label class="navigation__button navigation__button--burger" role="button" aria-controls="navigation__panel" aria-expanded="false" aria-label="Open menu" for="navigation__state-control" tabindex="0">
     <span></span>
@@ -80,6 +90,19 @@ Called when opening a menu
 
 ### close `(Callback Function)`
 Called when the menu is closed
+
+## Default Style Options
+```scss
+$navigation-panel-width: 100%;
+$navigation-panel-max-width: 400px;
+$navigation-panel-height: 100%;
+$navigation-panel-background: rgba(#fff, 0.95);
+$navigation-panel-transition-duration: 400ms;
+
+$navigation-button__icon-svg: true;
+$navigation-button__icon-color: #000;
+$navigation-button__icon-color--hover: false;
+```
 
 ## What's new?
 ### v1.3.1
