@@ -16,3 +16,11 @@ for (let i = 0, l = menuList.length; i < l; i += 1) {
   console.log(menuList[i].options);
   // menuList[i].destroy();
 }
+
+// Test Click
+const $button = document.createElement('button');
+$button.innerText = 'Click';
+$button.addEventListener('click', () => {
+  console.log('Click');
+});
+document.body.appendChild($button);
