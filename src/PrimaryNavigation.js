@@ -3,8 +3,8 @@
  * @author r00t80y<https://github.com/R00T80Y>
  * @file
  * @since 23-01-2022
- * @updated 16-02-2022
- * @version 0.2.0
+ * @updated 10-04-2022
+ * @version 0.2.1
  */
 
 import 'custom-event-polyfill';
@@ -36,6 +36,17 @@ function Plugin($rootElement, pluginOptions) {
   const $labelsList = $rootElement.querySelectorAll(`label[for="${$checkbox.id}"]`);
   const $panel = $rootElement.querySelector(pluginOptions.panelSelector);
 
+  const uniqName = (function () {
+    let name;
+    do {
+      name = `primary-navigation-${Utils.uniqId()}`;
+    } while (document.getElementById(name));
+    return name;
+  }());
+
+  $rootElement.setAttribute('data-plugin-name-uniq', uniqName);
+  $rootElement.setAttribute('data-plugin-name', 'primary-navigation');
+
   // Menu opened or not
   function isOpen() {
     return !!$checkbox.checked;
@@ -48,11 +59,29 @@ function Plugin($rootElement, pluginOptions) {
       $checkbox.dispatchEvent(new CustomEvent('change'));
     }
   }
+
   // Close menu
   function close() {
     if (isOpen()) {
       $checkbox.checked = false;
       $checkbox.dispatchEvent(new CustomEvent('change'));
+    }
+  }
+
+  // Close All opened menus
+  function closeAll() {
+    const $menuList = document.querySelectorAll('[data-plugin-name="primary-navigation"]');
+    if ($menuList) {
+      for (let i = 0, l = $menuList.length; i < l; i += 1) {
+        const $menuCheckbox = $menuList[i].querySelector(pluginOptions.stateControlSelector);
+        if ($menuCheckbox) {
+          const isChecked = !!$menuCheckbox.checked;
+          if (isChecked === true) {
+            $menuCheckbox.checked = false;
+            $menuCheckbox.dispatchEvent(new CustomEvent('change'));
+          }
+        }
+      }
     }
   }
 
@@ -65,12 +94,13 @@ function Plugin($rootElement, pluginOptions) {
       if (isOpen()) {
         close();
       } else {
+        closeAll();
         open();
       }
       // Esc
     } else if (e.keyCode === 27) {
       e.preventDefault();
-      close();
+      closeAll();
     }
   }
 
@@ -80,7 +110,7 @@ function Plugin($rootElement, pluginOptions) {
     // Esc
     if (e.keyCode === 27) {
       e.preventDefault();
-      close();
+      closeAll();
     }
   }
 
@@ -92,10 +122,12 @@ function Plugin($rootElement, pluginOptions) {
     if (!isOpen()) return;
 
     // Ignore click inside the menu
-    if (event.target.closest(`#${$rootElement.id}`)) return;
+    if (event.target.closest(`[data-plugin-name-uniq="${uniqName}"]`)) {
+      return;
+    }
 
     // Close menu
-    close();
+    closeAll();
   }
 
   function onStateModify(event) {
@@ -159,7 +191,7 @@ function Plugin($rootElement, pluginOptions) {
       $labelsList[i].addEventListener('keydown', onKeydown);
     }
 
-    document.addEventListener('click', onClickDocument);
+    document.addEventListener('click', onClickDocument, true);
   }
 
   function removeEvents() {
@@ -218,9 +250,6 @@ function createPrimaryNavigation(element, customOptions) {
     }
 
     for (let i = 0, l = nodeList.length; i < l; i += 1) {
-      // instances.push(Plugin(nodeList[i], Object.assign({}, defaultOptions, customOptions, {
-      //   name: 'ToggleButton'
-      // })));
       instances.push(new Plugin(nodeList[i], {
         ...defaultOptions,
         ...customOptions,
