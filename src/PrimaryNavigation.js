@@ -116,8 +116,6 @@ function Plugin($rootElement, pluginOptions) {
 
   // Close the menu by clicking on the page
   function onClickDocument(event) {
-    event.stopPropagation();
-
     // If the menu is closed, then exit the function
     if (!isOpen()) return;
 
