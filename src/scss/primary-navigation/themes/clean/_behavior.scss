@@ -1,0 +1,37 @@
+// ---------------------------------------------------------- //
+// Behavior
+// ---------------------------------------------------------- //
+.navigation {
+  display: inline-block;
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (min-width: $navigation-breakpoint) {
+  .navigation {
+    display: block;
+
+    &__panel {
+      position: static;
+      display: block;
+      width: auto;
+      max-width: none;
+      height: auto;
+      background: transparent;
+      opacity: 1;
+      transform: none;
+      transition: none;
+      visibility: visible;
+    }
+
+    &__list {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
