@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "server": "http-server ./dist -a localhost -p 9000 -c-1 -o",
-    "serve": "cross-env NODE_ENV=development BABEL_ENV=lib webpack serve --open --config tasks/webpack.dev.js",
+    "dev": "cross-env NODE_ENV=development BABEL_ENV=lib webpack serve --open --config tasks/webpack.dev.js",
     "build": "rm -rf ./dist && rollup --config ./tasks/rollup.config.js && npm run build:lib",
     "build:lib": "cross-env NODE_ENV=production BABEL_ENV=lib webpack --config tasks/webpack.prod.js",
     "lint": "clear && eslint ."
