@@ -12,24 +12,21 @@
   }
 }
 
-@media(min-width: 48rem) {
+@media (min-width: 48rem) {
   .navigation {
     display: block;
 
     &__panel {
-      visibility: visible;
       position: static;
-
       display: block;
       width: auto;
-      height: auto;
       max-width: none;
-
+      height: auto;
       background: transparent;
-
       opacity: 1;
       transform: none;
       transition: none;
+      visibility: visible;
     }
 
     &__list {
@@ -38,9 +35,7 @@
       align-items: center;
       justify-content: flex-end;
     }
-
   }
-
 }
 
 // ---------------------------------------------------------- //
@@ -56,29 +51,28 @@
   }
 
   &__list {
-    margin: 0;
     padding: 0;
+    margin: 0;
     overflow-x: hidden;
     overflow-y: auto;
   }
 
   &__item {
-    margin: 0;
     padding: 0;
+    margin: 0;
   }
 
   &__link {
     display: block;
     padding: 16px 8px;
-    user-select: none;
-
+    background-color: #f9f9f9;
     color: #333;
     font-weight: bold;
-    background-color: #f9f9f9;
+    user-select: none;
 
     &:hover {
-      color: #000;
       background-color: #f1f1f1;
+      color: #000;
     }
   }
 
@@ -94,10 +88,8 @@
 // ---------------------------------------------------------- //
 // Design Large screens
 // ---------------------------------------------------------- //
-@media(min-width: 48rem) {
-
+@media (min-width: 48rem) {
   .navigation {
-
     &__panel {
       @supports (backdrop-filter) {
         backdrop-filter: none;
@@ -105,8 +97,8 @@
     }
 
     &__list {
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
 
     &__link {
@@ -116,7 +108,5 @@
     &__button {
       display: none;
     }
-
   }
-
 }
