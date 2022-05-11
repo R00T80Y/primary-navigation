@@ -2,6 +2,10 @@
 ```console
 npm install @r00t80y/primary-navigation
 ```
+You may need to install "peerDependencies"
+```console
+npm install @r00t80y/resize-delay custom-event-polyfill element-closest-polyfill
+```
 ## How to use?
 
 ### JavaScript
@@ -93,6 +97,8 @@ Called when the menu is closed
 
 ## Default Style Options
 ```scss
+$navigation-breakpoint: 756px;
+
 $navigation-panel-width: 100%;
 $navigation-panel-max-width: 400px;
 $navigation-panel-height: 100%;
@@ -105,8 +111,12 @@ $navigation-button__icon-color--hover: false;
 ```
 
 ## What's new?
+### v1.3.3
+- Fix Bug: click
+
 ### v1.3.1
 - Added default option `overflowHidden`
+
 ### v1.1.0
 - SVG Icons
 ```scss
