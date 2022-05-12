@@ -1,11 +1,12 @@
 {
   "name": "@r00t80y/primary-navigation",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "An overlay Menu with a collection of effects and styles using CSS transitions.",
   "keywords": [
     "menu",
     "hamburger",
     "sidebar",
+    "animated menu",
     "IE 11"
   ],
   "sideEffects": [
