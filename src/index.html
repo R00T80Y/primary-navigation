@@ -29,7 +29,7 @@ body {
       <span></span>
     </label>
     <nav id="navigation__panel" class="navigation__panel navigation__panel--left" data-visible="hidden">
-      <div class="navigation__button-wrapper">
+      <div class="navigation__panel-top">
         <!-- Close Icon -->
         <label class="navigation__button navigation__button--close" role="button" aria-controls="navigation__panel" aria-expanded="false" aria-label="Close menu" for="navigation__state-control" tabindex="0">
           <span></span>
@@ -52,18 +52,18 @@ body {
   <!-- End: Primary Navigation(Left) -->
 
   <!-- Start: Primary Navigation(Right) -->
-  <div id="navigation-1" class="navigation">
+  <div class="navigation">
     <input type="checkbox" id="navigation__state-control-1" name="navigation__state-control-1" class="navigation__state-control" checked="false" style="display:none">
     <!-- Sometimes the browser caches the state of the checkbox -->
     <script>document.getElementById('navigation__state-control-1').checked = false;</script>
     <!-- Burger Icon -->
-    <label class="navigation__button navigation__button--burger" role="button" aria-controls="navigation__panel-1" aria-expanded="false" aria-label="Open menu" for="navigation__state-control-1" tabindex="0">
+    <label class="navigation__button navigation__button--burger" for="navigation__state-control-1" tabindex="0">
       <span></span>
     </label>
-    <nav id="navigation__panel-1" class="navigation__panel navigation__panel--right" data-visible="hidden">
-      <div class="navigation__button-wrapper">
+    <nav class="navigation__panel navigation__panel--right">
+      <div class="navigation__panel-top">
         <!-- Close Icon -->
-        <label class="navigation__button navigation__button--close" role="button" aria-controls="navigation__panel-1" aria-expanded="false" aria-label="Close menu" for="navigation__state-control-1" tabindex="0">
+        <label class="navigation__button navigation__button--close" for="navigation__state-control-1" tabindex="0">
           <span></span>
         </label>
       </div>
