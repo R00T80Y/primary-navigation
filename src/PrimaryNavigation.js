@@ -3,13 +3,13 @@
  * @author r00t80y<https://github.com/R00T80Y>
  * @file
  * @since 23-01-2022
- * @updated 10-04-2022
+ * @updated 12-05-2022
  * @version 0.2.1
  */
 
 import 'custom-event-polyfill';
 import 'element-closest-polyfill';
-import { ResizeDelay } from '@r00t80y/resize-delay';
+import { throttle } from 'throttle-debounce';
 import Utils from './utils';
 
 const defaultOptions = {
@@ -28,9 +28,6 @@ const defaultOptions = {
 };
 
 function Plugin($rootElement, pluginOptions) {
-  // Link to function to remove the resize event
-  let resizeDestroyCallback = null;
-
   const $checkbox = $rootElement.querySelector(pluginOptions.stateControlSelector);
   const $button = $rootElement.querySelector(pluginOptions.buttonSelector);
   const $labelsList = $rootElement.querySelectorAll(`label[for="${$checkbox.id}"]`);
@@ -171,16 +168,21 @@ function Plugin($rootElement, pluginOptions) {
     }
   }
 
+  const onResizeWindow = throttle(
+    200,
+    () => {
+      // Close the menu if the window is resized
+      if (isOpen()) {
+        if (document.body.clientWidth >= pluginOptions.breakpointClose) {
+          close();
+        }
+      }
+    }
+  );
+
   function createEvents() {
     if (pluginOptions.breakpointClose !== false) {
-      resizeDestroyCallback = (new ResizeDelay()).add(() => {
-        // Close the menu if the window is resized
-        if (isOpen()) {
-          if (document.body.clientWidth >= pluginOptions.breakpointClose) {
-            close();
-          }
-        }
-      });
+      window.addEventListener('resize', onResizeWindow);
     }
 
     $rootElement.addEventListener('keydown', onKeydownEsc);
@@ -193,7 +195,7 @@ function Plugin($rootElement, pluginOptions) {
   }
 
   function removeEvents() {
-    resizeDestroyCallback();
+    window.removeEventListener('resize', onResizeWindow);
 
     $rootElement.removeEventListener('keydown', onKeydownEsc);
     $checkbox.removeEventListener('change', onStateModify);
