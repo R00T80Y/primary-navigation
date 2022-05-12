@@ -102,11 +102,8 @@ function Plugin($rootElement, pluginOptions) {
   }
 
   function onKeydownEsc(e) {
-    e.stopPropagation();
-
     // Esc
     if (e.keyCode === 27) {
-      e.preventDefault();
       closeAll();
     }
   }
@@ -185,24 +182,24 @@ function Plugin($rootElement, pluginOptions) {
       window.addEventListener('resize', onResizeWindow);
     }
 
-    $rootElement.addEventListener('keydown', onKeydownEsc);
     $checkbox.addEventListener('change', onStateModify);
     for (let i = 0, l = $labelsList.length; i < l; i += 1) {
       $labelsList[i].addEventListener('keydown', onKeydown);
     }
 
+    document.addEventListener('keydown', onKeydownEsc);
     document.addEventListener('click', onClickDocument, true);
   }
 
   function removeEvents() {
     window.removeEventListener('resize', onResizeWindow);
 
-    $rootElement.removeEventListener('keydown', onKeydownEsc);
     $checkbox.removeEventListener('change', onStateModify);
     for (let i = 0, l = $labelsList.length; i < l; i += 1) {
       $labelsList[i].removeEventListener('keydown', onKeydown);
     }
 
+    document.removeEventListener('keydown', onKeydownEsc);
     document.removeEventListener('click', onClickDocument);
   }
 
