@@ -1,5 +1,5 @@
-# Demo
-[Demo](https://r00t80y.github.io/demo/primary-navigation/index.html)
+# Menu demo whit clean theme
+[Menu demonstration with a 'clean theme'](https://r00t80y.github.io/demo/primary-navigation/index.html)
 
 ## Install
 ```console
@@ -10,90 +10,24 @@ You may need to install "peerDependencies"
 npm install throttle-debounce custom-event-polyfill element-closest-polyfill
 ```
 
-## How to use with CDN?
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link href="https://cdn.jsdelivr.net/npm/@r00t80y/primary-navigation@1.3.4/dist/primary-navigation.css" rel="stylesheet">
-
-</head><body>
-
-<!-- Start: Primary Navigation(Right) -->
-<div class="navigation">
-  <input type="checkbox" id="navigation__state-control" name="navigation__state-control" class="navigation__state-control" checked="false" style="display:none">
-  <!-- Sometimes the browser caches the state of the checkbox -->
-  <script>document.getElementById('navigation__state-control').checked = false;</script>
-  <!-- Burger Icon -->
-  <label class="navigation__button navigation__button--burger" for="navigation__state-control" tabindex="0">
-    <span></span>
-  </label>
-  <nav class="navigation__panel navigation__panel--right">
-    <div class="navigation__panel-top">
-      <!-- Close Icon -->
-      <label class="navigation__button navigation__button--close" for="navigation__state-control" tabindex="0">
-        <span></span>
-      </label>
-    </div>
-    <!-- Menu -->
-    <ul class="navigation__list">
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 11</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 12</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 13</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 14</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 15</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 16</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 17</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 18</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 19</a></li>
-    </ul>
-  </nav>
-</div>
-<!-- End: Primary Navigation(Right) -->
-
-<script defer="" src="https://cdn.jsdelivr.net/npm/@r00t80y/primary-navigation@1.3.4/dist/PrimaryNavigation.lib.js"></script>
-<script>
-window.addEventListener('load', function () {
-  createPrimaryNavigation(
-    document.querySelectorAll('.navigation')
-  );
-})
-</script>
-
-</body></html>
-```
-
 ## How to use with webpack?
-#### JavaScript
+
+### JavaScript
 ```js
+// Add Styles
+import '@r00t80y/primary-navigation/dist/scss/core/index';
+import '@r00t80y/primary-navigation/dist/scss/themes/clean';
+
+// Add Script
 import { createPrimaryNavigation } from '@r00t80y/primary-navigation';
 
-const pluginDestroyCallback = createPrimaryNavigation(document.getElementById('navigation'), {
+// Init Menu
+createPrimaryNavigation(document.querySelector('.navigation'), {
   init: function () {
     console.log(`It's works!`);
-  },
-  open() {
-    console.log('Menu Open');
-  },
-  close() {
-    console.log('Menu Close');
   }
 });
-
-// pluginDestroyCallback()
 ```
-
-#### Styles
-```scss
-@import '@r00t80y/primary-navigation/src/scss/primary-navigation/core/index';
-@import '@r00t80y/primary-navigation/src/scss/primary-navigation/themes/clean';
-```
-or copy the styles and edit ```@r00t80y/primary-navigation/dist/primary-navigation.css```
-
 
 #### HTML
 ```html
@@ -114,15 +48,15 @@ or copy the styles and edit ```@r00t80y/primary-navigation/dist/primary-navigati
     </div>
     <!-- Menu -->
     <ul class="navigation__list">
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 1</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 2</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 3</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 4</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 5</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 6</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 7</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 8</a></li>
-      <li class="navigation__item"><a href="/" class="navigation__link">Link 9</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 1</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 2</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 3</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 4</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 5</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 6</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 7</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 8</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 9</a></li>
     </ul>
   </nav>
 </div>
@@ -170,7 +104,67 @@ $navigation-button__icon-color: #000;
 $navigation-button__icon-color--hover: false;
 ```
 
+## How to use with CDN?
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link href="https://cdn.jsdelivr.net/npm/@r00t80y/primary-navigation@1.3.5/dist/primary-navigation.css" rel="stylesheet">
+
+</head><body>
+
+<!-- Start: Primary Navigation(Right) -->
+<div class="navigation">
+  <input type="checkbox" id="navigation__state-control" name="navigation__state-control" class="navigation__state-control" checked="false" style="display:none">
+  <!-- Sometimes the browser caches the state of the checkbox -->
+  <script>document.getElementById('navigation__state-control').checked = false;</script>
+  <!-- Burger Icon -->
+  <label class="navigation__button navigation__button--burger" for="navigation__state-control" tabindex="0">
+    <span></span>
+  </label>
+  <nav class="navigation__panel navigation__panel--right">
+    <div class="navigation__panel-top">
+      <!-- Close Icon -->
+      <label class="navigation__button navigation__button--close" for="navigation__state-control" tabindex="0">
+        <span></span>
+      </label>
+    </div>
+    <!-- Menu -->
+    <ul class="navigation__list">
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 11</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 12</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 13</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 14</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 15</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 16</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 17</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 18</a></li>
+      <li class="navigation__item"><a href="#" class="navigation__link">Link 19</a></li>
+    </ul>
+  </nav>
+</div>
+<!-- End: Primary Navigation(Right) -->
+
+<script defer="" src="https://cdn.jsdelivr.net/npm/@r00t80y/primary-navigation@1.3.5/dist/PrimaryNavigation.lib.js"></script>
+<script>
+window.addEventListener('load', function () {
+  createPrimaryNavigation(
+    document.querySelectorAll('.navigation')
+  );
+})
+</script>
+
+</body></html>
+```
+
 ## What's new?
+### v1.3.5
+- Docs updated
+- Renamed init plugin function PrimaryNavigation -> createPrimaryNavigation
 ### v1.3.4
 - Docs updated
 - Replaced "ResizeDelay" on "throttle-debounce"
