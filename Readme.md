@@ -164,6 +164,7 @@ window.addEventListener('load', function () {
 ## What's new?
 ### v1.3.5
 - Docs updated
+- SCSS files moved to dist dir
 - Renamed init plugin function PrimaryNavigation -> createPrimaryNavigation
 ### v1.3.4
 - Docs updated
