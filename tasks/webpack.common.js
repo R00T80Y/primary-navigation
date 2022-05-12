@@ -2,7 +2,7 @@
 /**
  * @author r00t80y<https://github.com/R00T80Y>
  * @since 10.02.2022
- * @modify 13-02-2022
+ * @modify 12-05-2022
  * @version 0.1.0
  */
 
@@ -19,7 +19,7 @@ module.exports = {
       import: './PrimaryNavigation',
       filename: '[name].lib.js',
       library: {
-        name: 'PrimaryNavigation',
+        name: 'createPrimaryNavigation',
         type: 'umd',
         export: 'createPrimaryNavigation',
         umdNamedDefine: true
